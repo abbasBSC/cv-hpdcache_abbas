@@ -501,7 +501,7 @@ import hpdcache_pkg::*;
 
     hpdcache_fifo_reg #(
         /* FIXME: Should we put the depth at `NOC1_BUFFER_NUM_SLOTS? */
-        .FIFO_DEPTH  (2),
+        .FIFO_DEPTH  (HPDCACHE_MSHR_SETS*HPDCACHE_MSHR_WAYS),
         .fifo_data_t (mem_resp_metadata_t)
     ) i_r_metadata_fifo (
         .clk_i,
@@ -555,7 +555,7 @@ import hpdcache_pkg::*;
         end else begin
             hpdcache_fifo_reg #(
                 /* FIXME: Should we put the depth at `NOC1_BUFFER_NUM_SLOTS? */
-                .FIFO_DEPTH  (2),
+                .FIFO_DEPTH  (HPDCACHE_MSHR_SETS*HPDCACHE_MSHR_WAYS),
                 .fifo_data_t (hpdcache_refill_data_t)
             ) i_rdata_fifo (
                 .clk_i,

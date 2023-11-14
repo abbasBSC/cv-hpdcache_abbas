@@ -323,18 +323,20 @@ module hpdcache_to_l15 import hpdcache_pkg::*; import wt_cache_pkg::*;
     begin: thread_id_fsm_ff
      if (!rst_ni) begin
             th_state_q     <= IDLE;
-            hpdc_tid_q[0]  <= '0;
-            hpdc_tid_q[1]  <= '0; 
-            hpdc_pid_q[0]  <= '0;
-            hpdc_pid_q[1]  <= '0;
+        		for (int i = 0; i < NUM_THREAD_IDS; i = i + 1) begin
+        		    hpdc_tid_q[i] <= '0;
+        		    hpdc_pid_q[i] <= '0;
+        		end
         end else begin
             th_state_q     <= th_state_d;
-            hpdc_tid_q[0]  <= hpdc_tid_d[0];
-            hpdc_tid_q[1]  <= hpdc_tid_d[1]; 
-            hpdc_pid_q[0]  <= hpdc_pid_d[0];
-            hpdc_pid_q[1]  <= hpdc_pid_d[1];
+        		for (int i = 0; i < NUM_THREAD_IDS; i = i + 1) begin
+        		    hpdc_tid_q[i] <= hpdc_tid_d[i];
+        		    hpdc_pid_q[i] <= hpdc_pid_d[i];
+        		end
         end
     end
+	
+	
         // }}}
 
         // Free list of thread ids
