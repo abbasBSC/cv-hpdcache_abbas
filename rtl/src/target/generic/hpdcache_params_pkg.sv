@@ -146,7 +146,7 @@ package hpdcache_params_pkg;
     `endif
 
     `ifdef PITON_ARIANE
-        localparam int unsigned PARAM_MSHR_SETS = (`L15_NUM_THREADS >= 4) ? (`L15_NUM_THREADS>>2) : 2;
+        localparam int unsigned PARAM_MSHR_SETS = (`L15_NUM_THREADS >= 4) ? (`L15_NUM_THREADS>>1) : 2;
     `else
         localparam int unsigned PARAM_MSHR_SETS = `CONF_HPDCACHE_MSHR_SETS;
     `endif
